@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Pro — Dịch Vụ Cho Thuê Xe Tự Lái Uy Tín</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Classic Black & Gold Palette */
+        :root {
+            --bg: #000000;
+            --panel: #111111;
+            --panel-light: #1a1a1a;
+            --text: #ffffff;
+            --muted: #bbbbbb;
+            --line: rgba(221,184,77,.24);
+            --accent: #e5c35b;
+            --accent-dark: #a77d19;
+            --font: "Times New Roman", Times, serif;
+            --display: "Times New Roman", Times, serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font);
+        }
+        .topbar {
+            background-color: var(--accent);
+            color: #000000;
+            font-weight: 700;
+            font-size: 14.56px;
+        }
+        .button {
+            background-color: var(--accent);
+            color: #000000;
+            border-radius: 4px;
+            font-weight: 700;
+            border: none;
+        }
+        .button:hover {
+            background-color: var(--accent-dark);
+            transform: none;
+            box-shadow: none;
+        }
+        .button-outline {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            background: transparent;
+            border-radius: 4px;
+        }
+        .button-outline:hover {
+            background-color: rgba(229, 195, 91, 0.13);
+            color: var(--accent);
+        }
+        /* Classic AutoPro Banner Section */
+        .autopro-banner-hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #0a0a0a, #161410);
+            border-bottom: 2px solid var(--accent);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .autopro-banner-card {
+            max-width: 1160px;
+            margin: 0 auto;
+            background: rgba(17, 17, 17, 0.95);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 20px rgba(229,195,91,.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .autopro-banner-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .autopro-hero-gif {
+            display: block;
+            width: 100%;
+            max-width: 960px;
+            height: auto;
+            border: 1px solid rgba(229,195,91,.5);
+            border-radius: 10px;
+            box-shadow: 0 16px 38px rgba(0,0,0,.4);
+        }
+        .banner-features {
+            grid-column: 1 / -1;
+        }
+        .autopro-banner-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-weight: 700;
+            font-size: 12.32px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .autopro-banner-card h1 {
+            font-family: var(--display);
+            font-size: clamp(40.32px, 6.16vw, 60.48px);
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 15px;
+            letter-spacing: -.02em;
+        }
+        .autopro-banner-card h1 span {
+            color: var(--accent);
+        }
+        .autopro-banner-card p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: var(--muted);
+            font-size: 17.92px;
+            line-height: 1.6;
+        }
+        .banner-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            border-top: 1px solid var(--line);
+            padding-top: 25px;
+        }
+        .banner-feature-item {
+            background: #0f0f0f;
+            border: 1px solid rgba(229,195,91,.38);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+        .banner-feature-item strong {
+            display: block;
+            color: var(--accent);
+            font-size: 16.8px;
+            font-family: var(--display);
+            margin-bottom: 4px;
+        }
+        .banner-feature-item span {
+            color: var(--muted);
+            font-size: 13.44px;
+        }
+        @media(max-width: 768px) {
+            .autopro-banner-card {
+                gap: 16px;
+                padding: 14px;
+            }
+            .autopro-hero-gif {
+                width: 100%;
+            }
+            .banner-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        .booking-wrap {
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+        .booking {
+            background-color: var(--panel);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .field label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 12.32px;
+        }
+        .field select, .field input {
+            background-color: var(--panel-light);
+            border: 1px solid var(--line);
+            color: var(--text);
+            border-radius: 4px;
+            height: 44px;
+        }
+        .field select:focus, .field input:focus {
+            border-color: var(--accent);
+        }
+        h2 {
+            font-family: var(--display);
+            font-size: 35.84px;
+            color: var(--text);
+        }
+        .eyebrow {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 13.44px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+        .car-card {
+            background-color: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+        }
+        .car-card:hover {
+            border-color: var(--accent);
+            transform: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .car-tag {
+            background-color: var(--accent);
+            color: #000;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+        .price {
+            color: var(--accent);
+            font-family: var(--display);
+            font-size: 22.4px;
+            font-weight: 700;
+        }
+        .benefits {
+            background-color: #050505;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .benefit {
+            background-color: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+        }
+        .benefit:hover {
+            transform: none;
+            border-color: var(--accent);
+        }
+        .benefit-icon {
+            background-color: rgba(229, 195, 91, 0.18);
+            color: var(--accent);
+            border-radius: 4px;
+        }
+        .cta-box {
+            background-color: var(--panel);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #000000;
+            border-top: 1px solid var(--line);
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><span>✦</span> Dịch vụ cho thuê xe tự lái AUTOPRO — Uy tín, an toàn và nhanh chóng</div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14M7 16h.01M17 16h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                AUTO <em>PRO</em>
+            </a>
+            <nav class="nav-links" id="nav-links" aria-label="Điều hướng chính">
+                <a class="active" href="index.html">Trang chủ</a>
+                <a href="products.html">Bộ sưu tập xe</a>
+                <a href="booking.html">Đặt xe ngay</a>
+                <a href="my-bookings.html">Đơn của tôi</a>
+                <a href="about.html">Về chúng tôi</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="auth.html">Tài khoản</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="nav-phone" href="tel:19001234">☎ &nbsp;1900 1234</a>
+                <a class="button" href="booking.html">Đặt xe ngay</a>
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Classic AutoPro Banner Hero Section -->
+        <section class="autopro-banner-hero" id="trang-chu">
+            <div class="container">
+                <div class="autopro-banner-card">
+                    <img class="autopro-hero-gif" src="images/autopro.gif" alt="AutoPro - cho thuê xe tự lái, đặt xe nhanh và khám phá hành trình">
+                    <div class="autopro-banner-actions">
+                        <a class="button" href="booking.html">Đặt xe ngay</a>
+                        <a class="button button-outline" href="products.html">Khám phá xe</a>
+                    </div>
+                    <div class="banner-features">
+                        <div class="banner-feature-item">
+                            <strong>Dàn xe đời mới 2026</strong>
+                            <span>Đa dạng Sedan, SUV</span>
+                        </div>
+                        <div class="banner-feature-item">
+                            <strong>Thủ tục nhanh gọn</strong>
+                            <span>Nhận xe trong 15 phút</span>
+                        </div>
+                        <div class="banner-feature-item">
+                            <strong>Giá chỉ từ 400k</strong>
+                            <span>Minh bạch, không phụ phí</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Booking Form -->
+        <div class="container booking-wrap" id="dat-xe">
+            <form class="booking" id="booking-form" action="booking.html" method="GET">
+                <div class="field">
+                    <label for="booking-brand">Chọn dòng xe</label>
+                    <select id="booking-brand" name="brand">
+                        <option value="all">Tất cả các xe</option>
+                        <option value="Honda">Honda Civic</option>
+                        <option value="Hyundai">Hyundai Santa Fe</option>
+                        <option value="Mercedes-Benz">Mercedes-Benz C-Class</option>
+                        <option value="VinFast">VinFast VF 8</option>
+                        <option value="Mazda">Mazda 3</option>
+                        <option value="Mitsubishi">Mitsubishi Xpander</option>
+                        <option value="MG">MG5</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="pickup-date">Ngày nhận xe</label>
+                    <input type="date" id="pickup-date" name="pickup" required>
+                </div>
+                <div class="field">
+                    <label for="return-date">Ngày trả xe</label>
+                    <input type="date" id="return-date" name="return" required>
+                </div>
+                <div class="field">
+                    <label for="pickup-location">Địa điểm nhận xe</label>
+                    <select id="pickup-location" name="location">
+                        <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Giao tận nơi">Giao tận nơi miễn phí</option>
+                    </select>
+                </div>
+                <button class="button" type="submit">Tìm xe</button>
+            </form>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Xe tiêu biểu</div>
+                        <h2>Dàn xe chất lượng cao</h2>
+                    </div>
+                    <a href="products.html" class="button button-outline">Xem tất cả xe</a>
+                </div>
+                <div class="car-grid" id="featured-cars">
+                    <article class="car-card" data-brand="Honda" data-name="Honda Civic">
+                        <div class="car-image"><img src="images/honda.webp" alt="Honda Civic" loading="lazy"><span class="car-tag">Phổ biến</span></div>
+                        <div class="car-body">
+                            <div class="car-make"><span>HONDA · SEDAN</span></div>
+                            <h3>Honda Civic</h3>
+                            <div class="car-specs"><span>♙ 5 chỗ</span><span>⚙ Tự động</span></div>
+                            <div class="car-bottom"><div class="price">1.200.000đ <small>/ ngày</small></div><a class="button" href="booking.html">Thuê xe</a></div>
+                        </div>
+                    </article>
+                    <article class="car-card" data-brand="Hyundai" data-name="Hyundai Santa Fe">
+                        <div class="car-image"><img src="images/hyundai.webp" alt="Hyundai Santa Fe" loading="lazy"><span class="car-tag">SUV rộng rãi</span></div>
+                        <div class="car-body">
+                            <div class="car-make"><span>HYUNDAI · SUV</span></div>
+                            <h3>Hyundai Santa Fe</h3>
+                            <div class="car-specs"><span>♙ 7 chỗ</span><span>⚙ Tự động</span></div>
+                            <div class="car-bottom"><div class="price">1.800.000đ <small>/ ngày</small></div><a class="button" href="booking.html">Thuê xe</a></div>
+                        </div>
+                    </article>
+                    <article class="car-card" data-brand="Mercedes-Benz" data-name="Mercedes-Benz C-Class">
+                        <div class="car-image"><img src="images/mercedes.webp" alt="Mercedes-Benz C-Class" loading="lazy"><span class="car-tag">Cao cấp</span></div>
+                        <div class="car-body">
+                            <div class="car-make"><span>MERCEDES-BENZ · SEDAN</span></div>
+                            <h3>Mercedes-Benz C-Class</h3>
+                            <div class="car-specs"><span>♙ 5 chỗ</span><span>⚙ Tự động</span></div>
+                            <div class="car-bottom"><div class="price">2.800.000đ <small>/ ngày</small></div><a class="button" href="booking.html">Thuê xe</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section benefits offers-section" aria-labelledby="offers-title">
+            <div class="container">
+                <div class="benefits-head">
+                    <div class="eyebrow">Chương trình khuyến mãi</div>
+                    <h2 id="offers-title">Ưu đãi hiện có</h2>
+                </div>
+                <div class="offers-card" role="status">
+                    <div class="offers-mark" aria-hidden="true">✦</div>
+                    <div class="offers-copy">
+                        <span class="offers-status">Đang cập nhật</span>
+                        <h3>Chưa có ưu đãi áp dụng</h3>
+                        <p>Hiện AutoPro chưa cấu hình chương trình khuyến mãi. Bạn có thể xem giá thuê của từng mẫu xe; mọi ưu đãi (nếu có) sẽ được thông báo và xác nhận trước khi đặt.</p>
+                    </div>
+                    <div class="offers-actions">
+                        <a class="button" href="products.html">Xem bảng giá xe <span aria-hidden="true">→</span></a>
+                        <a class="button button-outline" href="contact.html">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="road-process" id="quy-trinh-thue-xe" aria-labelledby="road-process-title">
+            <div class="container">
+                <header class="road-process-heading">
+                    <div class="eyebrow">Hành trình AutoPro</div>
+                    <h2 id="road-process-title">Quy trình thuê xe</h2>
+                    <p>Bốn bước đơn giản để bạn sẵn sàng lên đường.</p>
+                </header>
+
+                <div class="road-canvas" data-road-animation>
+                    <svg class="road-route road-route--desktop" viewBox="0 0 1000 760" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="road-route-shadow" pathLength="1" d="M0 380 C65 380 52 235 120 235 C245 235 245 580 370 580 C500 580 500 235 630 235 C755 235 755 580 880 580 C948 580 935 380 1000 380"/>
+                        <path class="road-route-base" pathLength="1" d="M0 380 C65 380 52 235 120 235 C245 235 245 580 370 580 C500 580 500 235 630 235 C755 235 755 580 880 580 C948 580 935 380 1000 380"/>
+                        <path class="road-route-highlight" pathLength="1" d="M0 380 C65 380 52 235 120 235 C245 235 245 580 370 580 C500 580 500 235 630 235 C755 235 755 580 880 580 C948 580 935 380 1000 380"/>
+                        <circle class="road-route-cap" cx="0" cy="380" r="13"/>
+                        <circle class="road-route-cap" cx="1000" cy="380" r="13"/>
+                    </svg>
+                    <svg class="road-route road-route--mobile" viewBox="0 0 100 680" preserveAspectRatio="none" aria-hidden="true">
+                        <path class="road-route-shadow" pathLength="1" d="M50 0 C50 42 72 48 72 85 C72 150 28 190 28 225 C28 242 40 255 50 255 C60 255 72 268 72 285 C72 350 30 380 30 405 C30 415 40 425 50 425 C60 425 70 438 70 455 C70 520 30 550 30 575 C30 586 40 595 50 595 C60 595 50 625 50 680"/>
+                        <path class="road-route-base" pathLength="1" d="M50 0 C50 42 72 48 72 85 C72 150 28 190 28 225 C28 242 40 255 50 255 C60 255 72 268 72 285 C72 350 30 380 30 405 C30 415 40 425 50 425 C60 425 70 438 70 455 C70 520 30 550 30 575 C30 586 40 595 50 595 C60 595 50 625 50 680"/>
+                        <path class="road-route-highlight" pathLength="1" d="M50 0 C50 42 72 48 72 85 C72 150 28 190 28 225 C28 242 40 255 50 255 C60 255 72 268 72 285 C72 350 30 380 30 405 C30 415 40 425 50 425 C60 425 70 438 70 455 C70 520 30 550 30 575 C30 586 40 595 50 595 C60 595 50 625 50 680"/>
+                    </svg>
+
+                    <article class="road-stage road-stage--top" style="--stage-x: 12%; --stage-y: 31%; --stage-delay: 180ms;">
+                        <div class="road-copy">
+                            <span class="road-copy-number">01 / HÀNH TRÌNH</span>
+                            <h3>CHỌN XE</h3>
+                            <p>Khám phá và lựa chọn chiếc xe phù hợp với nhu cầu của bạn.</p>
+                        </div>
+                        <div class="road-node" role="img" aria-label="Bước 1: Chọn xe">
+                            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="m8 27 3-9a4 4 0 0 1 3.8-2.8h18.4A4 4 0 0 1 37 18l3 9v9h-5v-4H13v4H8v-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 26h28M15 22h18M15 36h.01M33 36h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="m16 15 2-4h12l2 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        </div>
+                    </article>
+
+                    <article class="road-stage road-stage--bottom" style="--stage-x: 37%; --stage-y: 76%; --stage-delay: 360ms;">
+                        <div class="road-copy">
+                            <span class="road-copy-number">02 / HÀNH TRÌNH</span>
+                            <h3>ĐẶT LỊCH</h3>
+                            <p>Chọn thời gian nhận xe, trả xe và gửi thông tin đặt xe.</p>
+                        </div>
+                        <div class="road-node" role="img" aria-label="Bước 2: Đặt lịch">
+                            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="10" y="13" width="28" height="25" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 10v7m16-7v7M10 21h28M17 28l4 4 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                    </article>
+
+                    <article class="road-stage road-stage--top" style="--stage-x: 63%; --stage-y: 31%; --stage-delay: 540ms;">
+                        <div class="road-copy">
+                            <span class="road-copy-number">03 / HÀNH TRÌNH</span>
+                            <h3>XÁC NHẬN</h3>
+                            <p>Kiểm tra thông tin đặt xe và xác nhận các điều khoản thuê xe.</p>
+                        </div>
+                        <div class="road-node" role="img" aria-label="Bước 3: Xác nhận">
+                            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M15 9h14l7 7v23H15a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M28 10v8h8M18 25h10M18 30h7m-6 5 3 3 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                    </article>
+
+                    <article class="road-stage road-stage--bottom" style="--stage-x: 88%; --stage-y: 76%; --stage-delay: 720ms;">
+                        <div class="road-copy">
+                            <span class="road-copy-number">04 / HÀNH TRÌNH</span>
+                            <h3>NHẬN XE</h3>
+                            <p>Nhận xe theo lịch hẹn và bắt đầu hành trình của bạn.</p>
+                        </div>
+                        <div class="road-node" role="img" aria-label="Bước 4: Nhận xe">
+                            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="29" cy="17" r="6" stroke="currentColor" stroke-width="2"/><path d="m25 21-9 9m4-4-4-4m0 8-4 4 4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m7 31 2-6a3 3 0 0 1 2.8-2h5m5 10 2-6a3 3 0 0 1 2.8-2H36a3 3 0 0 1 2.8 2l2 6v5h-4v-3H12v3H8v-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" style="padding-top: 60px;">
+            <div class="container">
+                <div class="cta-box" style="display: flex; align-items: center; justify-content: space-between; padding: 40px; gap: 30px;">
+                    <div>
+                        <div class="eyebrow">Sẵn sàng khởi hành</div>
+                        <h2>Bắt đầu chuyến đi của bạn ngay hôm nay cùng AutoPro</h2>
+                        <p style="color: var(--muted); margin: 5px 0 0; font-size: 14.56px;">Liên hệ ngay với chúng tôi để nhận báo giá chi tiết.</p>
+                    </div>
+                    <a class="button" href="booking.html">Đặt xe ngay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14" stroke="currentColor" stroke-width="1.8"/></svg></span>AUTO <em>PRO</em></a>
+                    <p>Dịch vụ cho thuê xe tự lái AUTOPRO uy tín và chuyên nghiệp.</p>
+                </div>
+                <div class="footer-col"><h3>Khám phá</h3><a href="products.html">Bộ sưu tập xe</a><a href="about.html">Về chúng tôi</a><a href="booking.html">Đặt xe</a></div>
+                <div class="footer-col"><h3>Hỗ trợ</h3><a href="about.html">Câu hỏi thường gặp</a><a href="booking.html">Điều khoản</a><a href="contact.html">Liên hệ</a><a href="admin.html">Quản lý cửa hàng</a></div>
+                <div class="footer-col"><h3>Liên hệ</h3><a href="tel:19001234">1900 1234</a><a href="mailto:hello@autopro.vn">hello@autopro.vn</a><p>Tây Ninh
+                </p></div>
+            </div>
+            <div class="copyright"><span>© 2026 Auto Pro. Bảo lưu mọi quyền.</span></div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/fleet.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/validation.js" defer></script>
+</body>
+</html>

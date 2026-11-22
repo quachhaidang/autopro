@@ -1,0 +1,45 @@
+{
+  "name": "autopro-desktop",
+  "version": "1.0.0",
+  "description": "Auto Pro desktop app with SQLite",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0"
+  },
+  "allowScripts": {
+    "electron@35.7.5": true
+  },
+  "build": {
+    "appId": "com.autopro.desktop",
+    "productName": "Auto Pro",
+    "asar": true,
+    "files": [
+      "electron/**/*",
+      "Website/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "AutoPro_Data/Data.db",
+        "to": "AutoPro_Data/Data.db"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
