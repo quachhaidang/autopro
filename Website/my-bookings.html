@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0c0a">
+    <meta name="description" content="Tra cứu đơn đặt xe Auto Pro bằng mã đặt xe và số điện thoại.">
+    <title>Tra cứu đơn đặt xe - Auto Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/booking.js" defer></script>
+</head>
+<body>
+    <div class="topbar"><span aria-hidden="true">✦</span> AUTO PRO · TRA CỨU ĐƠN HÀNG AN TOÀN</div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Auto Pro - Trang chủ">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14M7 16h.01M17 16h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                AUTO <em>PRO</em>
+            </a>
+            <nav class="nav-links" id="nav-links" aria-label="Điều hướng chính">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Bộ sưu tập xe</a>
+                <a href="booking.html">Đặt xe ngay</a>
+                <a class="active" href="my-bookings.html">Đơn của tôi</a>
+                <a href="about.html">Về chúng tôi</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="auth.html">Tài khoản</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="nav-phone" href="tel:19001234">☎ &nbsp;1900 1234</a>
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container lookup-page">
+        <section class="lookup-page-intro">
+            <div class="eyebrow">TRA CỨU CÁ NHÂN</div>
+            <h1>Đơn đặt xe của bạn</h1>
+            <p>Nhập mã đặt xe và đúng số điện thoại đã đăng ký để xem trạng thái, lịch thuê và chi phí.</p>
+        </section>
+
+        <section class="booking-panel lookup-panel">
+            <div class="booking-panel-heading">
+                <span class="booking-step" aria-hidden="true">↗</span>
+                <div><h2>Tra cứu đơn hàng</h2><p>Chỉ kết quả khớp cả hai thông tin mới được hiển thị.</p></div>
+            </div>
+            <form id="lookup-form" class="lookup-form" novalidate>
+                <div class="booking-field">
+                    <label for="lookup-code">Mã đặt xe</label>
+                    <input id="lookup-code" type="text" autocomplete="off" placeholder="Ví dụ: AP20260001" maxlength="24" required>
+                </div>
+                <div class="booking-field">
+                    <label for="lookup-phone">Số điện thoại</label>
+                    <input id="lookup-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="Số điện thoại đặt xe" required>
+                </div>
+                <button class="button" type="submit">Tra cứu đơn</button>
+            </form>
+            <p class="lookup-privacy">Thông tin đơn không được liệt kê công khai. Bản demo lưu dữ liệu trên trình duyệt này; tra cứu chỉ hoạt động trên cùng thiết bị/trình duyệt đã đặt xe.</p>
+        </section>
+
+        <section class="lookup-result" id="lookup-result" aria-live="polite" hidden>
+            <div class="lookup-result-heading">
+                <div><h2>Thông tin đơn hàng</h2><p id="lookup-result-code"></p></div>
+                <span class="lookup-status" id="lookup-result-status"></span>
+            </div>
+            <div class="lookup-result-grid" id="lookup-result-content"></div>
+            <form id="payment-form" class="booking-field" hidden>
+                <h3>Phiếu thanh toán</h3>
+                <label for="payment-amount">Tổng tiền</label>
+                <input id="payment-amount" type="number" min="1" step="1" required>
+                <label for="payment-method">Phương thức thanh toán</label>
+                <select id="payment-method" required><option value="TienMat">Tiền mặt</option><option value="ChuyenKhoan">Chuyển khoản</option><option value="The">Thẻ</option><option value="ViDienTu">Ví điện tử</option></select>
+                <button class="button" type="submit">Lập phiếu thanh toán</button>
+                <p id="payment-message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="order-lookup-inline lookup-booking-link">
+            <div class="lookup-inline-copy"><div class="eyebrow">CHƯA ĐẶT XE?</div><h2>Sẵn sàng cho hành trình mới?</h2><p>Chọn xe và gửi yêu cầu đặt xe trực tuyến.</p></div>
+            <a class="button button-outline" href="booking.html">Đặt xe ngay <span aria-hidden="true">→</span></a>
+        </section>
+    </main>
+
+    <div class="message-overlay" id="message-overlay" aria-hidden="true">
+        <section class="message-box" role="dialog" aria-modal="true" aria-labelledby="message-title" aria-describedby="message-content">
+            <button class="message-close" id="message-close" type="button" aria-label="Đóng thông báo">×</button>
+            <div class="message-icon" id="message-icon" aria-hidden="true"></div>
+            <div class="message-eyebrow" id="message-eyebrow">AUTOPRO · THÔNG BÁO</div>
+            <h2 id="message-title"></h2>
+            <div id="message-content" class="message-content"></div>
+            <div id="message-actions" class="message-actions"></div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">AP</span>AUTO <em>PRO</em></a><p>Dịch vụ cho thuê xe tự lái uy tín và chuyên nghiệp.</p></div>
+                <div class="footer-col"><h3>Khám phá</h3><a href="products.html">Bộ sưu tập xe</a><a href="about.html">Về chúng tôi</a><a href="booking.html">Đặt xe</a></div>
+                <div class="footer-col"><h3>Hỗ trợ</h3><a href="my-bookings.html">Đơn của tôi</a><a href="contact.html">Liên hệ</a></div>
+                <div class="footer-col"><h3>Liên hệ</h3><a href="tel:19001234">1900 1234</a><a href="mailto:hello@autopro.vn">hello@autopro.vn</a></div>
+            </div>
+            <div class="copyright"><span>© 2026 Auto Pro. Bảo lưu mọi quyền.</span></div>
+        </div>
+    </footer>
+</body>
+</html>

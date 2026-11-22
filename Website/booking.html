@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0c0a">
+    <meta name="description" content="Đặt xe tự lái Auto Pro sau khi đăng nhập hoặc đăng ký tài khoản hội viên.">
+    <title>Đặt xe trực tuyến - Auto Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/booking.css">
+    <script src="js/fleet.js?v=20261122-2" defer></script>
+    <script src="js/main.js?v=20261122-2" defer></script>
+    <script src="js/booking.js?v=20261122-2" defer></script>
+</head>
+<body>
+    <div class="topbar"><span aria-hidden="true">✦</span> Đặt xe Auto Pro — Minh bạch chi phí, sẵn sàng khởi hành</div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Auto Pro - Trang chủ">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14M7 16h.01M17 16h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                AUTO <em>PRO</em>
+            </a>
+            <nav class="nav-links" id="nav-links" aria-label="Điều hướng chính">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Bộ sưu tập xe</a>
+                <a class="active" href="booking.html">Đặt xe ngay</a>
+                <a href="my-bookings.html">Đơn của tôi</a>
+                <a href="about.html">Về chúng tôi</a>
+                <a href="contact.html">Liên hệ</a>
+                <a href="auth.html">Tài khoản</a>
+            </nav>
+            <div class="nav-actions">
+                <a class="nav-phone" href="tel:19001234">☎ &nbsp;1900 1234</a>
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container booking-page">
+        <section class="booking-intro">
+            <div>
+                <div class="eyebrow">Đặt xe trực tuyến · Dành cho hội viên</div>
+                <h1>Chọn xe. Lên đường.</h1>
+                <p>Gửi yêu cầu thuê xe trong vài phút. Xem trước chi phí và tra cứu đơn bằng mã đặt xe cùng số điện thoại.</p>
+            </div>
+            <a class="booking-lookup-link" href="my-bookings.html">Đã đặt xe? <span>Tra cứu đơn <span aria-hidden="true">↗</span></span></a>
+        </section>
+
+        <form id="booking-form" class="booking-layout" novalidate>
+            <div class="booking-main-column">
+                <section class="booking-panel" aria-labelledby="vehicle-section-title">
+                    <div class="booking-panel-heading">
+                        <span class="booking-step">01</span>
+                        <div><h2 id="vehicle-section-title">Thông tin xe</h2><p>Chọn xe phù hợp cho hành trình của bạn.</p></div>
+                    </div>
+                    <div class="booking-field">
+                        <label>Dòng xe <span aria-hidden="true">*</span></label>
+                        <div id="rental-vehicles">
+                            <div class="rental-vehicle-row">
+                                <select id="booking-car" class="booking-car-picker" required><option value="">Đang tải danh sách xe…</option></select>
+                            </div>
+                        </div>
+                        <button class="button button-outline" id="add-vehicle" type="button">+ Thêm xe</button>
+                        <span class="booking-field-error" id="booking-car-error"></span>
+                    </div>
+                    <div id="selected-car" class="selected-car selected-car--empty" aria-live="polite">
+                        <div class="selected-car-placeholder" aria-hidden="true">AP</div>
+                        <div><strong>Chọn xe để xem thông tin</strong><span>Giá xe được lấy trực tiếp từ danh mục hiện tại.</span></div>
+                    </div>
+                </section>
+
+                <section class="booking-panel" aria-labelledby="customer-section-title">
+                    <div class="booking-panel-heading">
+                        <span class="booking-step">02</span>
+                        <div><h2 id="customer-section-title">Thông tin khách hàng</h2><p>Thông tin được điền từ tài khoản hội viên đã đăng nhập.</p></div>
+                    </div>
+                    <div class="booking-form-grid">
+                        <div class="booking-field">
+                            <label for="customer-name">Họ và tên <span aria-hidden="true">*</span></label>
+                            <input id="customer-name" name="fullname" type="text" autocomplete="name" maxlength="80" placeholder="Nguyễn Văn An" required>
+                            <span class="booking-field-error" id="customer-name-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="customer-phone">Số điện thoại <span aria-hidden="true">*</span></label>
+                            <input id="customer-phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="090 123 4567" required>
+                            <span class="booking-field-error" id="customer-phone-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="customer-id">CMND <span aria-hidden="true">*</span></label>
+                            <input id="customer-id" name="customerId" type="text" inputmode="numeric" required>
+                            <span class="booking-field-error" id="customer-id-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="driver-license">Bằng lái <span aria-hidden="true">*</span></label>
+                            <select id="driver-license" required><option value="">Chọn bằng lái</option><option>A1</option><option>A2</option><option>A3</option><option>A4</option><option>B1</option><option>B2</option><option>C</option><option>D</option><option>E</option><option>F</option></select>
+                            <span class="booking-field-error" id="driver-license-error"></span>
+                        </div>
+                        <div class="booking-field booking-field--full">
+                            <label for="customer-email">Email <span class="optional-label">Không bắt buộc</span></label>
+                            <input id="customer-email" name="email" type="email" autocomplete="email" placeholder="ban@example.com">
+                            <span class="booking-field-error" id="customer-email-error"></span>
+                        </div>
+                        <div class="booking-field booking-field--full">
+                            <label for="pickup-address">Địa chỉ nhận xe <span aria-hidden="true">*</span></label>
+                            <input id="pickup-address" name="pickupAddress" type="text" autocomplete="street-address" maxlength="180" placeholder="Số nhà, đường, phường/xã, tỉnh/thành phố" required>
+                            <span class="booking-field-error" id="pickup-address-error"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="booking-panel" aria-labelledby="schedule-section-title">
+                    <div class="booking-panel-heading">
+                        <span class="booking-step">03</span>
+                        <div><h2 id="schedule-section-title">Thời gian thuê xe</h2><p>Thời lượng tính theo khối 24 giờ, làm tròn lên; tối thiểu một ngày.</p></div>
+                    </div>
+                    <div class="booking-form-grid">
+                        <div class="booking-field">
+                            <label for="pickup-date">Ngày nhận xe <span aria-hidden="true">*</span></label>
+                            <input id="pickup-date" type="date" required>
+                            <span class="booking-field-error" id="pickup-date-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="pickup-time">Giờ nhận xe <span aria-hidden="true">*</span></label>
+                            <input id="pickup-time" type="time" value="09:00" required>
+                            <span class="booking-field-error" id="pickup-time-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="return-date">Ngày trả xe <span aria-hidden="true">*</span></label>
+                            <input id="return-date" type="date" required>
+                            <span class="booking-field-error" id="return-date-error"></span>
+                        </div>
+                        <div class="booking-field">
+                            <label for="return-time">Giờ trả xe <span aria-hidden="true">*</span></label>
+                            <input id="return-time" type="time" value="09:00" required>
+                            <span class="booking-field-error" id="return-time-error"></span>
+                        </div>
+                    </div>
+                    <div class="duration-summary" aria-live="polite"><span>Thời lượng thuê</span><strong id="rental-duration">Chọn ngày và giờ để tính</strong></div>
+                </section>
+
+                <section class="booking-panel" aria-labelledby="services-section-title">
+                    <div class="booking-panel-heading">
+                        <span class="booking-step">04</span>
+                        <div><h2 id="services-section-title">Dịch vụ đi kèm</h2><p>Chỉ các dịch vụ có giá được cấu hình mới chọn được.</p></div>
+                    </div>
+                    <div class="service-card-list">
+                        <label class="service-card">
+                            <input type="radio" name="delivery" value="Tại cửa hàng Auto Pro" data-price="0" checked>
+                            <span class="service-card-icon" aria-hidden="true">⌂</span>
+                            <span class="service-card-copy"><strong>Nhận xe tại cửa hàng</strong><small>Nhận xe theo lịch hẹn.</small></span>
+                            <span class="service-card-price">Miễn phí</span>
+                        </label>
+                        <label class="service-card">
+                            <input type="radio" name="delivery" value="Giao xe tận nơi" data-price="0">
+                            <span class="service-card-icon" aria-hidden="true">⌖</span>
+                            <span class="service-card-copy"><strong>Giao xe tận nơi</strong><small>Dịch vụ miễn phí theo thông tin hiện có.</small></span>
+                            <span class="service-card-price">Miễn phí</span>
+                        </label>
+                    </div>
+                    <h3 class="service-subheading">Tùy chọn khác</h3>
+                    <div class="service-card-list">
+                        <label class="service-card service-card--unpriced">
+                            <input type="checkbox" disabled aria-label="Bảo hiểm chuyến đi chưa có đơn giá">
+                            <span class="service-card-icon" aria-hidden="true">◇</span>
+                            <span class="service-card-copy"><strong>Bảo hiểm chuyến đi</strong><small>Chưa có đơn giá trong danh mục hiện tại.</small></span>
+                            <span class="service-card-price">Chưa có giá</span>
+                        </label>
+                        <label class="service-card service-card--unpriced">
+                            <input type="checkbox" disabled aria-label="Thiết bị phát Wi-Fi chưa có đơn giá">
+                            <span class="service-card-icon" aria-hidden="true">⌁</span>
+                            <span class="service-card-copy"><strong>Thiết bị phát Wi-Fi</strong><small>Chưa có đơn giá trong danh mục hiện tại.</small></span>
+                            <span class="service-card-price">Chưa có giá</span>
+                        </label>
+                        <label class="service-card service-card--unpriced">
+                            <input type="checkbox" disabled aria-label="Ghế ngồi trẻ em chưa có đơn giá">
+                            <span class="service-card-icon" aria-hidden="true">♧</span>
+                            <span class="service-card-copy"><strong>Ghế ngồi trẻ em</strong><small>Chưa có đơn giá trong danh mục hiện tại.</small></span>
+                            <span class="service-card-price">Chưa có giá</span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="booking-panel booking-notes-panel" aria-labelledby="note-section-title">
+                    <div class="booking-panel-heading">
+                        <span class="booking-step">05</span>
+                        <div><h2 id="note-section-title">Ghi chú</h2><p>Thông tin thêm cho lịch nhận xe (nếu có).</p></div>
+                    </div>
+                    <div class="booking-field">
+                        <label for="booking-note">Yêu cầu thêm <span class="optional-label">Không bắt buộc</span></label>
+                        <textarea id="booking-note" name="note" rows="3" maxlength="500" placeholder="Ví dụ: thời gian dự kiến đến nhận xe…"></textarea>
+                    </div>
+                    <label class="booking-terms"><input id="booking-terms" type="checkbox"><span>Tôi đã đọc và đồng ý với điều khoản thuê xe Auto Pro.</span></label>
+                </section>
+            </div>
+
+            <aside class="booking-summary-column" aria-label="Tóm tắt chi phí">
+                <section class="price-summary" aria-labelledby="price-summary-title">
+                    <div class="summary-kicker">DỰ TOÁN MINH BẠCH</div>
+                    <h2 id="price-summary-title">Chi tiết chi phí đặt xe</h2>
+                    <div class="price-summary-car">
+                        <span>Xe đã chọn</span>
+                        <strong id="summary-car-name">Chưa chọn xe</strong>
+                    </div>
+                    <div class="price-line"><span>Giá thuê xe</span><strong id="summary-rental">—</strong></div>
+                    <div class="price-line price-line-sub"><span id="summary-duration-label">Thời lượng</span><strong id="summary-days">—</strong></div>
+                    <div class="price-line"><span>Phí giao xe</span><strong id="summary-delivery">0 VNĐ</strong></div>
+                    <div class="price-line"><span>Phí bảo dưỡng</span><strong id="summary-pickup">0 VNĐ</strong></div>
+                    <div class="price-line"><span>Dịch vụ tính phí khác</span><strong id="summary-services">0 VNĐ</strong></div>
+                    <div class="price-line"><span>Giảm giá</span><strong id="summary-discount">0 VNĐ</strong></div>
+                    <div class="price-total"><span>Tổng thanh toán dự kiến</span><strong id="summary-total">—</strong></div>
+                    <p class="price-rule">Tổng = giá thuê xe × số ngày tính tròn lên + dịch vụ có giá − giảm giá. Không có chương trình giảm giá được cấu hình.</p>
+                    <p class="price-disclaimer">Tùy chọn chưa có giá không được cộng vào dự toán và hiện chưa thể chọn.</p>
+                    <button class="button booking-submit" id="booking-submit" type="submit">Xác nhận đặt xe</button>
+                    <p class="booking-submit-note">Chưa thu tiền. Auto Pro sẽ liên hệ để xác nhận.</p>
+                </section>
+            </aside>
+        </form>
+
+        <section class="order-lookup-inline" id="lookup" aria-labelledby="lookup-title">
+            <div class="lookup-mark" aria-hidden="true">↗</div>
+            <div class="lookup-inline-copy"><div class="eyebrow">Đã có mã đặt xe?</div><h2 id="lookup-title">Tra cứu đơn hàng</h2><p>Dùng mã đặt xe và số điện thoại đã cung cấp để xem thông tin riêng của bạn.</p></div>
+            <a class="button button-outline" href="my-bookings.html">Tra cứu đơn <span aria-hidden="true">→</span></a>
+        </section>
+    </main>
+
+    <div class="message-overlay" id="message-overlay" aria-hidden="true">
+        <section class="message-box" role="dialog" aria-modal="true" aria-labelledby="message-title" aria-describedby="message-content">
+            <button class="message-close" id="message-close" type="button" aria-label="Đóng thông báo">×</button>
+            <div class="message-icon" id="message-icon" aria-hidden="true"></div>
+            <div class="message-eyebrow" id="message-eyebrow">AUTOPRO · THÔNG BÁO</div>
+            <h2 id="message-title"></h2>
+            <div id="message-content" class="message-content"></div>
+            <div id="message-actions" class="message-actions"></div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">AP</span>AUTO <em>PRO</em></a><p>Dịch vụ cho thuê xe tự lái uy tín và chuyên nghiệp.</p></div>
+                <div class="footer-col"><h3>Khám phá</h3><a href="products.html">Bộ sưu tập xe</a><a href="about.html">Về chúng tôi</a><a href="booking.html">Đặt xe</a></div>
+                <div class="footer-col"><h3>Hỗ trợ</h3><a href="my-bookings.html">Đơn của tôi</a><a href="contact.html">Liên hệ</a></div>
+                <div class="footer-col"><h3>Liên hệ</h3><a href="tel:19001234">1900 1234</a><a href="mailto:hello@autopro.vn">hello@autopro.vn</a></div>
+            </div>
+            <div class="copyright"><span>© 2026 Auto Pro. Bảo lưu mọi quyền.</span></div>
+        </div>
+    </footer>
+</body>
+</html>

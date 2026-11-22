@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0c0a">
+    <meta name="description" content="Trang quản lý cửa hàng Auto Pro.">
+    <title>Quản lý cửa hàng - Auto Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <div class="topbar"><span aria-hidden="true">✦</span> Khu vực quản lý cửa hàng Auto Pro</div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html" aria-label="Auto Pro - Trang chủ">
+                <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14M7 16h.01M17 16h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                AUTO <em>PRO</em>
+            </a>
+            <div class="nav-actions">
+                <a class="button button-outline" href="index.html">Về trang chủ</a>
+                <button class="button button-outline" id="logout-button" type="button" hidden>Đăng xuất</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-shell">
+        <section class="admin-login" id="login-panel" aria-labelledby="login-title">
+            <div class="admin-login-mark" aria-hidden="true">AP</div>
+            <div class="eyebrow">Auto Pro · Khu vực quản trị</div>
+            <h1 id="login-title">Đăng nhập quản lý</h1>
+            <p class="admin-intro">Đăng nhập để theo dõi đơn thuê xe và quản lý dàn xe của cửa hàng.</p>
+            <div class="demo-notice" role="note">
+                <strong>Chế độ demo đồ án</strong>
+                <span>Đăng nhập mô phỏng bằng JavaScript và lưu dữ liệu trên trình duyệt, không dùng cho cửa hàng hoặc dữ liệu thật.</span>
+                <span>Tài khoản quản trị được xác thực từ cơ sở dữ liệu SQLite.</span>
+            </div>
+            <form id="login-form" class="admin-form" novalidate>
+                <div class="admin-field">
+                    <label for="admin-username">Tài khoản</label>
+                    <input id="admin-username" name="username" type="text" autocomplete="username" required>
+                    <span class="field-error" id="username-error"></span>
+                </div>
+                <div class="admin-field">
+                    <label for="admin-password">Mật khẩu</label>
+                    <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+                    <span class="field-error" id="password-error"></span>
+                </div>
+                <p class="admin-message" id="login-message" role="alert" aria-live="polite"></p>
+                <button class="button admin-submit" type="submit">Đăng nhập</button>
+            </form>
+        </section>
+
+        <section class="admin-dashboard" id="dashboard" hidden>
+            <div class="dashboard-heading">
+                <div>
+                    <div class="eyebrow">Tổng quan cửa hàng</div>
+                    <h1>Xin chào, quản lý</h1>
+                    <p class="admin-intro">Theo dõi hoạt động thuê xe và cập nhật dàn xe tại một nơi.</p>
+                </div>
+                <a class="button" href="products.html">Xem cửa hàng <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="demo-notice dashboard-notice" role="note">
+                <strong>Bản demo — dữ liệu lưu trên trình duyệt</strong>
+                <span>Phiên đăng nhập và dữ liệu localStorage không phải cơ chế bảo mật. Không nhập thông tin khách hàng hoặc mật khẩu thật.</span>
+            </div>
+
+            <section class="stats-grid" aria-label="Thống kê cửa hàng">
+                <article class="stat-card"><span>Tổng đơn thuê</span><strong id="stat-orders">0</strong><small>Đơn đã lưu trong trình duyệt</small></article>
+                <article class="stat-card"><span>Chờ duyệt</span><strong id="stat-pending">0</strong><small>Cần xác nhận với khách</small></article>
+                <article class="stat-card"><span>Đang thuê</span><strong id="stat-active">0</strong><small>Đơn đang thực hiện</small></article>
+                <article class="stat-card"><span>Xe trong dàn</span><strong id="stat-fleet">0</strong><small>Hiển thị trong danh sách xe</small></article>
+                <article class="stat-card"><span>Doanh thu dự kiến</span><strong id="stat-revenue">0 đ</strong><small>Tổng đơn không bị hủy</small></article>
+            </section>
+
+            <section class="admin-chart" aria-labelledby="chart-title">
+                <div class="admin-section-heading"><div><div class="eyebrow">Hiệu quả kinh doanh</div><h2 id="chart-title">Doanh thu và số đơn theo tháng</h2></div></div>
+                <div class="chart-bars" id="dashboard-chart" aria-live="polite"></div>
+            </section>
+
+            <section class="admin-section" aria-labelledby="orders-title">
+                <div class="admin-section-heading">
+                    <div><div class="eyebrow">Đơn đặt xe</div><h2 id="orders-title">Theo dõi đơn thuê</h2></div>
+                    <label class="admin-search">Tìm đơn
+                        <input id="order-search" type="search" placeholder="Mã đơn, khách hàng, xe...">
+                    </label>
+                    <label class="admin-search">Trạng thái
+                        <select id="order-status-filter"><option value="all">Tất cả trạng thái</option><option value="pending">Chờ duyệt</option><option value="confirmed">Đã xác nhận</option><option value="active">Đang thuê</option><option value="completed">Hoàn thành</option><option value="cancelled">Đã hủy</option></select>
+                    </label>
+                    <button class="button button-outline" id="export-orders" type="button">Xuất CSV</button>
+                </div>
+                <div class="orders-list" id="admin-orders" aria-live="polite"></div>
+                <p class="empty-message" id="orders-empty" hidden>Chưa có đơn phù hợp. Đơn đặt xe mới sẽ hiển thị tại đây.</p>
+            </section>
+
+            <section class="admin-section" aria-labelledby="fleet-title">
+                <div class="admin-section-heading">
+                    <div><div class="eyebrow">Danh mục phương tiện</div><h2 id="fleet-title">Quản lý dàn xe</h2></div>
+                    <p class="section-hint">Thêm, chỉnh sửa hoặc xóa xe. Thay đổi sẽ cập nhật trang xe và biểu mẫu đặt xe.</p>
+                </div>
+                <div class="fleet-layout">
+                    <form id="fleet-form" class="fleet-form" novalidate>
+                        <input id="fleet-id" type="hidden">
+                        <h3 id="fleet-form-title">Thêm xe mới</h3>
+                        <div class="fleet-form-grid">
+                            <div class="admin-field">
+                                <label for="fleet-brand">Hãng xe</label>
+                                <input id="fleet-brand" required maxlength="40" placeholder="Ví dụ: Honda">
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-name">Tên xe</label>
+                                <input id="fleet-name" required maxlength="60" placeholder="Ví dụ: Honda Civic">
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-category">Loại xe</label>
+                                <select id="fleet-category" required>
+                                    <option value="">Chọn loại xe</option><option>Xe tải</option><option>Xe máy</option><option>Xe 5 chỗ</option><option>Xe 7 chỗ</option><option>Xe khách</option>
+                                </select>
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-year">Năm sản xuất</label>
+                                <input id="fleet-year" type="number" min="2005" required>
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-owner">Chủ xe</label>
+                                <input id="fleet-owner" required maxlength="100">
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-license">Yêu cầu bằng lái</label>
+                                <select id="fleet-license" required>
+                                    <option value="">Chọn bằng lái</option><option>A1</option><option>A2</option><option>A3</option><option>A4</option><option>B1</option><option>B2</option><option>C</option><option>D</option><option>E</option><option>F</option>
+                                </select>
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-price">Giá thuê mỗi ngày (đ)</label>
+                                <input id="fleet-price" type="number" min="1000" step="1000" required placeholder="1200000">
+                            </div>
+                            <div class="admin-field">
+                                <label for="fleet-image">Ảnh xe</label>
+                                <input id="fleet-image" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+                            </div>
+                        </div>
+                        <div class="fleet-image-preview-wrap" id="fleet-image-preview-wrap" hidden>
+                            <img class="fleet-image-preview" id="fleet-image-preview" alt="Xem trước ảnh xe">
+                            <span id="fleet-image-preview-label">Ảnh hiện tại</span>
+                        </div>
+                        <p class="admin-message" id="fleet-message" role="status" aria-live="polite"></p>
+                        <div class="form-actions">
+                            <button class="button" id="fleet-save" type="submit">Thêm xe vào dàn</button>
+                            <button class="button button-outline" id="fleet-cancel" type="button" hidden>Hủy chỉnh sửa</button>
+                        </div>
+                    </form>
+                    <div class="fleet-list" id="admin-fleet" aria-live="polite"></div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+    <script src="js/fleet.js" defer></script>
+    <script src="js/admin.js" defer></script>
+</body>
+</html>

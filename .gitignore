@@ -1,0 +1,3 @@
+node_modules/
+AutoPro_Data/*.backup-*
+dist/

@@ -1,0 +1,150 @@
+/* 
+   Responsive Styles for Auto Pro
+*/
+
+@media (max-width: 900px) {
+    .nav-links { gap: 18px; }
+    .nav-phone { display: none; }
+    .booking { grid-template-columns: repeat(2, 1fr); }
+    .booking .button { align-self: end; }
+    .car-grid { grid-template-columns: repeat(2, 1fr); }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .brand-list { grid-template-columns: repeat(4, 1fr); }
+    .offers-card { grid-template-columns: 58px minmax(0, 1fr); }
+    .offers-actions { grid-column: 2; }
+}
+
+@media (min-width: 641px) and (max-width: 1200px) {
+    .nav { min-height: 66px; }
+    .nav-phone { display: none; }
+    .menu-toggle { display: grid; place-items: center; }
+    .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid var(--line); background: var(--nav-bg); }
+    .nav-links.open { display: flex; flex-direction: column; }
+    .nav-links a { padding: 13px 8px; border-bottom: 1px solid var(--line); }
+    .nav-actions > .button { display: none; }
+}
+
+@media (max-width: 640px) {
+    .container { width: min(100% - 32px, 480px); }
+    .topbar { padding: 0 12px; font-size: 11.2px; text-align: center; }
+    .nav { min-height: 66px; }
+    .menu-toggle { display: grid; place-items: center; }
+    .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid var(--line); background: var(--nav-bg); }
+    .nav-links.open { display: flex; flex-direction: column; }
+    .nav-links a { padding: 13px 8px; border-bottom: 1px solid var(--line); }
+    .nav-actions > .button { display: none; }
+    .hero { min-height: 590px; }
+    .hero::before { background-position: 58% center; }
+    .hero::after { background: linear-gradient(90deg, rgba(8,12,17,.93), rgba(8,12,17,.54)), linear-gradient(0deg, rgba(8,12,17,.78), transparent 60%); }
+    .hero-content { padding: 68px 0 84px; }
+    h1 { font-size: clamp(48.16px, 13.44vw, 68.32px); }
+    .hero-copy { font-size: 14.56px; }
+    .hero-stats { gap: 24px; margin-top: 34px; }
+    .booking-wrap { margin-top: -30px; }
+    .booking { gap: 10px; padding: 14px; }
+    .field select, .field input { height: 44px; font-size: 12.32px; }
+    .booking .button { min-height: 44px; }
+    .brands { padding: 42px 0 36px; }
+    .brands-head { align-items: start; flex-direction: column; gap: 8px; }
+    .brand-list { gap: 8px; }
+    .brand-item { min-height: 44px; }
+    .brand-item span { font-size: 11.2px; }
+    .section { padding: 68px 0; }
+    .section-head { align-items: start; flex-direction: column; gap: 12px; }
+    .section-subtitle { font-size: 13.44px; }
+    .car-grid { grid-template-columns: 1fr; gap: 13px; }
+    .car-image { height: 220px; }
+    .benefits { padding: 60px 0; }
+    .benefits-grid { gap: 9px; }
+    .benefit { padding: 16px 13px; }
+    .benefit h3 { font-size: 13.44px; }
+    .benefit p { font-size: 11.2px; }
+    .offers-card { grid-template-columns: 1fr; gap: 16px; padding: 22px 18px; }
+    .offers-mark { width: 48px; height: 48px; }
+    .offers-actions { grid-column: auto; flex-direction: column; align-items: stretch; }
+    .cta { padding-bottom: 62px; }
+    .cta-box { min-height: 0; align-items: start; flex-direction: column; padding: 28px 23px; }
+    .cta-copy h2 { font-size: 31.36px; }
+    .cta-box::after { right: -80px; bottom: -130px; }
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 27px 18px; }
+    .footer-about { grid-column: 1 / -1; }
+    .copyright { flex-direction: column; gap: 8px; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+    .road-canvas { height: 700px; margin-bottom: 48px; }
+    .road-stage { width: min(190px, 30%); }
+    .road-node { width: 92px; height: 92px; }
+    .road-node svg { width: 40px; height: 40px; }
+    .road-copy { padding: 14px 13px 15px; }
+    .road-copy-number { font-size: 11.2px; }
+    .road-copy h3 { font-size: 17.92px; }
+    .road-copy p { font-size: 14.56px; }
+    .road-stage--bottom .road-copy { top: calc(var(--stage-y) + 65px); }
+}
+
+@media (max-width: 640px) {
+    .road-process { padding: 64px 0 58px; }
+    .road-process-heading { margin-bottom: 26px; text-align: left; }
+    .road-process-heading h2 { font-size: clamp(33.6px, 9.4vw, 44.8px); }
+    .road-process-heading p { font-size: 16.8px; }
+    .road-canvas {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        grid-auto-rows: minmax(160px, auto);
+        height: auto;
+        margin: 0;
+    }
+    .road-route--desktop { display: none; }
+    .road-route--mobile { display: block; width: 88px; }
+    .road-route-shadow { stroke-width: 24; }
+    .road-route-base { stroke-width: 15; }
+    .road-route-highlight { stroke-width: 1.5; }
+    .road-stage {
+        position: relative;
+        top: auto;
+        left: auto;
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        align-items: center;
+        width: 100%;
+        min-height: 160px;
+        height: auto;
+        --road-stage-x: 0;
+        transform: translate(var(--road-stage-x), 12px);
+    }
+    .road-node {
+        position: relative;
+        top: auto;
+        left: auto;
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        width: 76px;
+        height: 76px;
+        transform: none;
+    }
+    .road-node::before { inset: -6px; }
+    .road-node svg { width: 35px; height: 35px; }
+    .road-copy {
+        position: relative;
+        top: auto !important;
+        left: auto;
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        padding: 14px 13px 15px;
+        transform: none;
+    }
+    .road-copy-number { font-size: 10.08px; }
+    .road-copy h3 { font-size: 17.92px; }
+    .road-copy p { font-size: 14.56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    .road-canvas:not(.is-in-view) .road-route path { stroke-dasharray: none; stroke-dashoffset: 0; }
+    .road-stage { opacity: 1; transform: translate(var(--road-stage-x), 0); }
+}

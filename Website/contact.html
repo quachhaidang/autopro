@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ VIP - Auto Pro Classic</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 50px;
+        }
+        .contact-info h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-family: var(--display);
+            font-size: 26.88px;
+        }
+        .info-item {
+            margin-bottom: 30px;
+        }
+        .info-item p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 14.56px;
+            line-height: 1.7;
+        }
+        .contact-form-container {
+            background: var(--panel);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            box-shadow: 0 30px 80px rgba(0,0,0,.5);
+        }
+        .field {
+            margin-bottom: 22px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 130px;
+            padding: 14px;
+            background: var(--panel-light);
+            border: 1px solid rgba(229,195,91,.3);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: var(--font);
+            outline: none;
+        }
+        textarea:focus {
+            border-color: var(--accent);
+        }
+        @media (max-width: 850px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar"><span>✦</span> Kênh liên hệ VIP — Hỗ trợ 24/7 dành riêng cho hội viên thượng lưu</div>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="index.html">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15.5 5.2 9a2 2 0 0 1 1.9-1.4h9.8A2 2 0 0 1 18.8 9l2.2 6.5v3h-2v-2H5v2H3v-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14M7 16h.01M17 16h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+                AUTO <em>PRO</em>
+            </a>
+            <nav class="nav-links" id="nav-links" aria-label="Điều hướng chính">
+                <a href="index.html">Trang chủ</a>
+                <a href="products.html">Bộ sưu tập xe</a>
+                <a href="booking.html">Đặt xe ngay</a>
+                <a href="my-bookings.html">Đơn của tôi</a>
+                <a href="about.html">Về chúng tôi</a>
+                <a class="active" href="contact.html">Liên hệ</a>
+                <a href="auth.html">Tài khoản</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container section">
+        <div class="section-head">
+            <div>
+                <div class="eyebrow">KẾT NỐI ĐẶC QUYỀN</div>
+                <h2>Liên hệ với quản gia VIP</h2>
+                <div class="classic-divider"></div>
+            </div>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h3>Văn phòng đại diện</h3>
+                    <p>Tòa nhà hội viên VIP, 123 Đường Lê Lợi, Quận 1, TP. Hồ Chí Minh</p>
+                    <p>Trung tâm dịch vụ đặc quyền, Cầu Giấy, Hà Nội</p>
+                </div>
+                <div class="info-item">
+                    <h3>Hotline hỗ trợ 24/7</h3>
+                    <p>Tổng đài VIP: <strong>1900 1234</strong></p>
+                    <p>Quản gia hành trình: <strong>0909 123 456</strong></p>
+                </div>
+                <div class="info-item">
+                    <h3>Hộp thư điện tử</h3>
+                    <p>Hội viên: vip@autopro.vn</p>
+                    <p>Hỗ trợ nhanh: support@autopro.vn</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <form id="contact-form">
+                    <div class="field">
+                        <label for="contact-name">Họ và tên quý khách</label>
+                        <input type="text" id="contact-name" placeholder="Nhập họ và tên..." required style="width: 100%; height: 48px; padding: 0 14px; background: var(--panel-light); border: 1px solid rgba(229,195,91,.3); border-radius: 6px; color: var(--text);">
+                    </div>
+                    <div class="field">
+                        <label for="contact-email">Địa chỉ Email</label>
+                        <input type="email" id="contact-email" placeholder="example@domain.com" required style="width: 100%; height: 48px; padding: 0 14px; background: var(--panel-light); border: 1px solid rgba(229,195,91,.3); border-radius: 6px; color: var(--text);">
+                    </div>
+                    <div class="field">
+                        <label for="contact-subject">Chủ đề yêu cầu</label>
+                        <select id="contact-subject" style="width: 100%; height: 48px; padding: 0 14px; background: var(--panel-light); border: 1px solid rgba(229,195,91,.3); border-radius: 6px; color: var(--text);">
+                            <option value="feedback">Góp ý dịch vụ hoàng gia</option>
+                            <option value="support">Yêu cầu quản gia hỗ trợ</option>
+                            <option value="partnership">Hợp tác hội viên thượng lưu</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="contact-message">Nội dung chi tiết</label>
+                        <textarea id="contact-message" placeholder="Nhập nội dung yêu cầu đặc biệt của quý khách..." required></textarea>
+                    </div>
+                    <button class="button" type="submit" style="width: 100%; height: 50px;">Gửi yêu cầu VIP <span aria-hidden="true">↗</span></button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <footer>
+        <div class="container copyright">
+            <span>© 2026 Auto Pro Classic. Kết nối đẳng cấp.</span>
+            <span>Hỗ trợ 24/7 tận tâm.</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/validation.js" defer></script>
+</body>
+</html>

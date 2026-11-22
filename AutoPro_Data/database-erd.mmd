@@ -1,0 +1,191 @@
+%% ERD Auto Pro - sinh theo AutoPro_Data/schema.sql
+%% PK = khóa chính, FK = khóa ngoại
+%% Quan hệ được giữ đúng theo FOREIGN KEY trong SQLite.
+
+erDiagram
+    VAI_TRO {
+        INTEGER ma_vai_tro PK
+        TEXT ten_vai_tro UK
+        TEXT mo_ta
+    }
+
+    NGUOI_DUNG {
+        INTEGER ma_nguoi_dung PK
+        INTEGER ma_vai_tro FK
+        TEXT ten_dang_nhap UK
+        TEXT mat_khau_hash
+        TEXT ho_ten
+        TEXT so_dien_thoai
+        TEXT email
+        TEXT trang_thai
+        TEXT ngay_tao
+        TEXT ngay_cap_nhat
+        TEXT dang_nhap_lan_cuoi
+    }
+
+    NHAT_KY_HE_THONG {
+        INTEGER ma_nhat_ky PK
+        INTEGER ma_nguoi_dung FK
+        TEXT hanh_dong
+        TEXT ten_bang
+        INTEGER ma_ban_ghi
+        TEXT chi_tiet
+        TEXT ngay_tao
+    }
+
+    LOAI_XE {
+        INTEGER ma_loai_xe PK
+        TEXT ten_loai_xe UK
+        TEXT mo_ta
+        TEXT trang_thai
+    }
+
+    XE {
+        INTEGER ma_xe PK
+        INTEGER ma_loai_xe FK
+        TEXT bien_so_xe UK
+        TEXT so_khung UK
+        TEXT hang_xe
+        TEXT ten_xe
+        INTEGER nam_san_xuat
+        TEXT mau_sac
+        INTEGER so_cho
+        TEXT hop_so
+        TEXT loai_nhien_lieu
+        INTEGER so_km_hien_tai
+        REAL gia_thue_ngay
+        TEXT duong_dan_hinh_anh
+        TEXT chu_xe
+        TEXT yeu_cau_bang_lai
+        TEXT mo_ta
+        TEXT trang_thai
+        TEXT ngay_tao
+        TEXT ngay_cap_nhat
+    }
+
+    KHACH_HANG {
+        INTEGER ma_khach_hang PK
+        TEXT ho_ten
+        TEXT so_dien_thoai UK
+        TEXT email
+        TEXT so_cccd UK
+        TEXT so_gplx UK
+        TEXT dia_chi
+        TEXT trang_thai
+        TEXT ngay_tao
+    }
+
+    DAT_XE {
+        INTEGER ma_dat_xe PK
+        TEXT ma_don_thue UK
+        INTEGER ma_khach_hang FK
+        INTEGER ma_xe FK
+        INTEGER nguoi_tao FK
+        TEXT ngay_nhan_xe
+        TEXT ngay_tra_xe
+        TEXT ngay_nhan_thuc_te
+        TEXT ngay_tra_thuc_te
+        REAL tien_thue_xe
+        REAL tien_dich_vu
+        REAL phi_bao_duong
+        REAL tien_giam_gia
+        REAL tien_dat_coc
+        REAL tong_tien
+        TEXT ghi_chu
+        TEXT trang_thai
+        TEXT ngay_tao
+        TEXT ngay_cap_nhat
+    }
+
+    DICH_VU_DAT_XE {
+        INTEGER ma_dich_vu_dat_xe PK
+        INTEGER ma_dat_xe FK
+        TEXT ten_dich_vu
+        INTEGER so_luong
+        REAL don_gia
+        REAL thanh_tien
+    }
+
+    HOP_DONG {
+        INTEGER ma_hop_dong PK
+        INTEGER ma_dat_xe FK, UK
+        INTEGER nguoi_ky FK
+        TEXT ma_hop_dong_code UK
+        TEXT ngay_ky
+        REAL tien_coc_yeu_cau
+        TEXT duong_dan_hop_dong
+        TEXT dieu_khoan
+        TEXT trang_thai
+    }
+
+    THANH_TOAN {
+        INTEGER ma_thanh_toan PK
+        INTEGER ma_dat_xe FK
+        INTEGER nguoi_xu_ly FK
+        TEXT ma_giao_dich UK
+        TEXT loai_thanh_toan
+        REAL so_tien
+        TEXT phuong_thuc_thanh_toan
+        TEXT trang_thai_thanh_toan
+        TEXT ngay_thanh_toan
+        TEXT ghi_chu
+    }
+
+    BAO_DUONG_XE {
+        INTEGER ma_bao_duong PK
+        INTEGER ma_xe FK
+        INTEGER nguoi_thuc_hien FK
+        TEXT loai_bao_duong
+        TEXT noi_dung
+        REAL chi_phi
+        INTEGER so_km
+        TEXT ngay_bao_duong
+        TEXT ngay_bao_duong_tiep_theo
+        TEXT trang_thai
+    }
+
+    KIEM_TRA_XE {
+        INTEGER ma_kiem_tra PK
+        INTEGER ma_xe FK
+        INTEGER ma_dat_xe FK
+        INTEGER nguoi_kiem_tra FK
+        TEXT loai_kiem_tra
+        INTEGER so_km
+        TEXT muc_nhien_lieu
+        TEXT ghi_chu_tinh_trang
+        TEXT ghi_chu_hu_hong
+        TEXT ngay_kiem_tra
+    }
+
+    BAO_CAO_HU_HONG {
+        INTEGER ma_bao_cao_hu_hong PK
+        INTEGER ma_xe FK
+        INTEGER ma_dat_xe FK
+        INTEGER nguoi_bao_cao FK
+        TEXT mo_ta_hu_hong
+        REAL chi_phi_du_kien
+        REAL chi_phi_thuc_te
+        TEXT trang_thai
+        TEXT ngay_bao_cao
+        TEXT ngay_xu_ly
+    }
+
+    VAI_TRO ||--o{ NGUOI_DUNG : "co"
+    NGUOI_DUNG ||--o{ NHAT_KY_HE_THONG : "ghi_nhat_ky"
+    LOAI_XE ||--o{ XE : "phan_loai"
+    KHACH_HANG ||--o{ DAT_XE : "dat"
+    XE ||--o{ DAT_XE : "duoc_dat"
+    NGUOI_DUNG ||--o{ DAT_XE : "tao"
+    DAT_XE ||--o{ DICH_VU_DAT_XE : "co_dich_vu"
+    DAT_XE ||--o| HOP_DONG : "co_hop_dong"
+    NGUOI_DUNG ||--o{ HOP_DONG : "ky"
+    DAT_XE ||--o{ THANH_TOAN : "duoc_thanh_toan"
+    NGUOI_DUNG ||--o{ THANH_TOAN : "xu_ly"
+    XE ||--o{ BAO_DUONG_XE : "duoc_bao_duong"
+    NGUOI_DUNG ||--o{ BAO_DUONG_XE : "thuc_hien"
+    XE ||--o{ KIEM_TRA_XE : "duoc_kiem_tra"
+    DAT_XE ||--o{ KIEM_TRA_XE : "co_kiem_tra"
+    NGUOI_DUNG ||--o{ KIEM_TRA_XE : "kiem_tra"
+    XE ||--o{ BAO_CAO_HU_HONG : "co_hu_hong"
+    DAT_XE ||--o{ BAO_CAO_HU_HONG : "phat_sinh_tu"
+    NGUOI_DUNG ||--o{ BAO_CAO_HU_HONG : "bao_cao"
